@@ -2,14 +2,16 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { ScrollView, TextInput } from 'react-native-gesture-handler'
 import { Feather } from '@expo/vector-icons'
-import {useNavigation} from '@react-navigation/native'
-import {NativeStackNavigationProp} from '@react-navigation/native-stack'
+import { useNavigation } from '@react-navigation/native'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 import New from '../components/New'
+import House from '../components/House'
+import Recommended from '../components/Recommended'
 
 export type RootStackParamList = {
     YourScreen: string;
-  };
+};
 
 export default function Home() {
     const navigation = useNavigation<any>();
@@ -33,30 +35,77 @@ export default function Home() {
             <View style={styles.contentNew}>
                 <Text style={styles.title}>Novidades</Text>
             </View>
-
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ paddingHorizontal: 15 }}>
-                <New 
-                cover={require('../assets/house1.jpg')}
-                name="Casa de Praia"
-                description="Casa nova uma quadra do mar, lugar seguro e monitorado 24horas."
-                onPress={() => navigation.navigate('detail') }
-                price="R$ 1.204,90"
+                <New
+                    cover={require('../assets/house1.jpg')}
+                    name="Casa de Praia"
+                    description="Casa nova uma quadra do mar, lugar seguro e monitorado 24horas."
+                    onPress={() => navigation.navigate('detail')}
+                    price="R$ 1.204,90"
                 />
-                <New 
-                cover={require('../assets/house2.jpg')}
-                name="Casa Floripa"
-                description="Casa nova uma quadra do mar, lugar seguro e monitorado 24horas."
-                onPress={() => {}}
-                price="R$ 1.504,90"
+                <New
+                    cover={require('../assets/house2.jpg')}
+                    name="Casa Floripa"
+                    description="Casa nova uma quadra do mar, lugar seguro e monitorado 24horas."
+                    onPress={() => { }}
+                    price="R$ 1.504,90"
                 />
-                <New 
-                cover={require('../assets/house3.jpg')}
-                name="Rancho SP"
-                description="Casa nova uma quadra do mar, lugar seguro e monitorado 24horas."
-                onPress={() => {}}
-                price="R$ 2.204,90"
+                <New
+                    cover={require('../assets/house3.jpg')}
+                    name="Rancho SP"
+                    description="Casa nova uma quadra do mar, lugar seguro e monitorado 24horas."
+                    onPress={() => { }}
+                    price="R$ 2.204,90"
                 />
-    
+
+            </ScrollView>
+
+            <View style={{ flexDirection: 'row', marginBottom: 10, alignItems: 'center' }}>
+                <Text style={[styles.title, { marginTop: 20 }]}>Próximo de você</Text>
+            </View>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ paddingHorizontal: 15 }}>
+                <House
+                    cover={require('../assets/house5.jpg')}
+                    description="Casa nova uma quadra do mar, lugar seguro e monitorado 24horas."
+                    onPress={() => navigation.navigate('detail')}
+                    price="R$ 2.204,90"
+                />
+                <House
+                    cover={require('../assets/house4.jpg')}
+                    description="Casa Antiga uma quadra do Palacio, lugar seguro e monitorado 24horas."
+                    onPress={() => navigation.navigate('detail')}
+                    price="R$ 3.204,90"
+                />
+                <House
+                    cover={require('../assets/house6.jpg')}
+                    description="Casa nova uma quadra do shopping, lugar seguro e monitorado 24horas."
+                    onPress={() => navigation.navigate('detail')}
+                    price="R$ 4.204,90"
+                />
+            </ScrollView>
+
+            <Text style={[styles.title, { marginTop: 20 }]}>
+                Dica do dia
+            </Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ paddingHorizontal: 15 }}>
+                <Recommended
+                    cover={require('../assets/house5.jpg')}
+                    offer="25% OFF"
+                    onPress={() => navigation.navigate('detail')}
+                    name="Casa Floripa"
+                />
+                <Recommended
+                    cover={require('../assets/house1.jpg')}
+                    offer="25% OFF"
+                    onPress={() => navigation.navigate('detail')}
+                    name="Rancho SP"
+                />
+                <Recommended
+                    cover={require('../assets/house2.jpg')}
+                    offer="25% OFF"
+                    onPress={() => navigation.navigate('detail')}
+                    name="Casa de Chá"
+                />
             </ScrollView>
         </ScrollView>
     );
